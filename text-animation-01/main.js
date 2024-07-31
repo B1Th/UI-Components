@@ -1,19 +1,14 @@
-function splitTextIntoSpans(target) {
-    let elements = document.querySelectorAll(target)
-    elements.forEach((element) => {
-        element.classList.add('split-text')
-        let text = element.innerText
-        let splitText = text
-            .split(" ")
-            .map(function (word) {
-                let char = word.split('').map(char => {
-                    return `<span class="split-char">${char}</span>`
-                }).join('')
-                return `<div class="split-word">${char}&nbsp</div>`
-            }).join('')
+import './style.scss'
 
-        element.innerHTML = splitText
-    })
-}
+const animText = "Animmmmmated text"
+const animTextWrapper = document.querySelector('.animated-text')
 
-splitTextIntoSpans('.bubble-text')
+const animTextArray =  animText.split('')
+
+animTextArray.forEach(letter => {
+  const letterElement = document.createElement('span')
+  letterElement.textContent = letter
+  letterElement.classList.add('letter')
+
+  animTextWrapper.appendChild(letterElement)
+});
